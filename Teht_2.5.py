@@ -21,4 +21,4 @@ summa = (lu + le + na) / 1000
 
 i, d = divmod(summa, 1)
 
-print(f"Paino kiloina nykymittojen mukaan:",int(i), "ja", str(f"{d * 1000:.0f}"),"grammaa")
+print(f"Paino nykymittojen mukaan:",int(i),"kiloa ja", str(f"{d * 1000:.0f}"),"grammaa")
