@@ -9,4 +9,3 @@ while number < 1001:
         print(number)
     number = number +1
 #print(f"number arvo lopuksi {number} (ei kuulu tehtävän antoon)")
-
