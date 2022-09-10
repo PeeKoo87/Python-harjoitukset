@@ -1,20 +1,20 @@
-# Kirjoita funktio, joka saa parametrinaan bensiinin määrän Yhdysvaltain nestegallonoina
-# ja palauttaa paluuarvonaan vastaavan litramäärän.
-# Kirjoita pääohjelma, joka kysyy gallonamäärän käyttäjältä ja muuntaa sen litroiksi.
-# Muunnos on tehtävä aliohjelmaa hyödyntäen. Muuntamista jatketaan siihen saakka,
-# kunnes käyttäjä syöttää negatiivisen gallonamäärän.
 
+# funktio muunnokseen
 def gallonToLitre(userInput):
     gallons = userInput
     litres = gallons * 3.785
     return litres
 
-print("muutetaan gallonat litroiksi")
+# pääohjelma
+
+print("muutetaan gallonat litroiksi,kunnes negatiivinen tulos syötetään")
 userInput = int(input("syötä gallonat:  "))
 while userInput >= 0:
 
         litres = (gallonToLitre(userInput))
         print(f"Gallonat litroina: {litres:.2f},litraa")
         userInput = int(input("syötä gallonat:  "))
+
+# ja viimeiseksi tulostus
 
 print("negatiivinen tulos, ohjelma lopetettu")

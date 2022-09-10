@@ -4,13 +4,15 @@
 # kutsut funktiota ja tulostat sen palauttaman summan.
 
 
-num_list = []
+def calculate_sum(list):
+    total = 0
+    for i in list:
+        total += i
+        return total
 
-numQ = int(input("anna kokonaisluku: "))
-while numQ != "":
-    numQ = int(input("anna kokonaisluku: "))
-    numQ.insert(1, num_list)
-    numQ.append(num_list)
+a = [1, 2, 3, 4, 5]
+b = [10, 15, 20]
 
-
-print(num_list)
+print(sum(a))
+print(calculate_sum(a))
+print(calculate_sum(b))

@@ -1,8 +1,14 @@
-# Kirjoita funktio, joka saa parametrinaan listan kokonaislukuja.
-# Ohjelma palauttaa toisen listan,joka on muuten samanlainen kuin parametrina saatu lista
-# paitsi että siitä on karsittu pois kaikki parittomat luvut.
-# Kirjoita testausta varten pääohjelma, jossa luot listan,
-# kutsut funktiota ja tulostat sen jälkeen sekä alkuperäisen että karsitun listan.
 
+# funktio poistaa listasta parittomat luvut
+def remove_odd(a):
+    for i in a[:]:
+        if i % 2 != 0:
+            a.remove(i)
+    return a
 
+a = [2, 5, 7 ,8, 4]
 
+# lopuksi molempien listojen tulostus
+
+print(f"alkuperäinen lista: {a}")
+print(f"lista ilman parittomia: {remove_odd(a)}")
