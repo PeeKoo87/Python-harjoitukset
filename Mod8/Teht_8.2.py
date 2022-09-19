@@ -15,7 +15,7 @@ yhteys = mysql.connector.connect(
          autocommit=True
          )
 
-CC = input("anna maakoodi: ")
+CC = input("Anna maakoodi: ")
 AP = "select type, count(*) from airport where iso_country = '" + CC + "' group by type"
 
 
@@ -24,8 +24,7 @@ kursori.execute(AP)
 
 result = kursori.fetchall()
 
-#kysytään lentokenttien lukumäärä suomessa järjesteltynä tyypin mukaa
-print(result)
-
-
-#select type, count(*) as from airport where iso_country = 'FI' group by type
+#kysytään lentokenttien lukumäärä suomessa järjesteltynä tyypin mukaan
+print(f"Lentokentät tunnuksella: {CC}")
+for rivi in result:
+    print(f"{rivi[0]}, {rivi[1]}")

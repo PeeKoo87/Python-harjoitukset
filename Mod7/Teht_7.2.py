@@ -6,7 +6,8 @@ def check_duplicates(name):
         return False
 # pääkoodi etc.
 nameInput = input("anna nimi: ")
-name = {""}
+
+name = set()
 while nameInput != "":
     name.add(nameInput)
     nameInput = input("anna nimi: ")
