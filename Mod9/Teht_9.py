@@ -33,9 +33,24 @@ class Car:
 
 #auto listan luonti
 for i in range(10):
-    cars.append(Car("ABC-" + str(i), random.randint(100, 200)))
+    cars.append(Car("ABC-" + str(i+1), random.randint(100, 200)))
 
-#pääohjelma
+#esimerkkit
+
+#t1
+#Car1 = Car("ABC-123", 142)
+#Car1.print_info()
+
+#t2
+#Car1.accelerate(30)
+#Car1.accelerate(70)
+#Car1.accelerate(50)
+#Car1.accelerate(-200)
+
+#t3
+#Car1.travel(1.5)
+
+#päähjelma t4 eli kisa
 stop = False
 while not stop:
     for car in cars:
