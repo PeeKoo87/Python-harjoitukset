@@ -30,7 +30,7 @@ def haku(icao):
     # suoritetaan kysely
     kursori = yhteys.cursor()
     kursori.execute(sql)
-    response = kursori.fetchall() # tai .fetchone()
+    response = kursori.fetchall()# tai .fetchone()
     if kursori.rowcount > 0:
         return response[0]
     else:
