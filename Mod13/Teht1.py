@@ -1,48 +1,55 @@
-#Toteuta Flask-taustapalvelu, joka ilmoittaa,
+# Toteuta Flask-taustapalvelu, joka ilmoittaa,
 # onko parametrina saatu luku alkuluku vai ei.
 # Hyödynnä toteutuksessa aiempaa tehtävää, jossa alkuluvun testaus tehtiin.
 # Esimerkiksi lukua 31 vastaava GET-pyyntö annetaan muodossa: http://127.0.0.1:3000/alkuluku/31.
 # Vastauksen on oltava muodossa: {"Number":31, "isPrime":true}.
-IntChk = int(input("anna kokonaisluku: "))
-for i in range(2, IntChk):
-    if IntChk % i == 0:
-        print("luku ei ole alkuluku")
-        break
 
-else:
-    print("luku on alkuluku")
-
-from flask import Flask, request
+from flask import Flask, Response
+import json
 
 app = Flask(__name__)
-@app.route('/PrimeNumber')
 
-def isPrime(luku):
-    args = request.args
-    luku = float(args.get("luku"))
-    for i in range(2, luku):
-        if IntChk % i == 0:
 
-            isPrime = {
-                luku : int(luku),
+@app.route('/alkuluku/<number>')
+def summa(number):
+    try:
+        number = int(number)
+        statuscode = 200
 
-            }
+        def num_chk(number):
+            if number > 1:
+                for n in range(2, number):
+                    if (number % n) == 0:
+                        return False
+                return True
+            else:
+                return False
 
-            return isPrime
+        response = {
+            "number": number,
+            "isPrime": num_chk(number)
 
-    number = float(args.get("luku1"))
-    luku2 = float(args.get("luku2"))
-    summa = luku1+luku2
+        }
 
-    result1 = {
-        "luku1": luku1,
-        "luku2": luku2,
-        "summa": summa
+    except ValueError:
+        statuscode = 400
+        response = {
+            "status": statuscode,
+            "teksti": "Virheellinen yhteenlaskettava"
+        }
+
+    jsonresp = json.dumps(response)
+    return Response(response=jsonresp, status=statuscode, mimetype="application/json")
+
+
+@app.errorhandler(404)
+def page_not_found(statuscode):
+    response = {
+        "status": "404",
+        "teksti": "Virheellinen päätepiste"
     }
-
-    return vastaus
-
-
+    jsonresp = json.dumps(response)
+    return Response(response=jsonresp, status=404, mimetype="application/json")
 
 
 if __name__ == '__main__':
